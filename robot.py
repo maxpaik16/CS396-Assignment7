@@ -20,11 +20,18 @@ class ROBOT:
     def Prepare_To_Sense(self):
         self.sensors = {}
 
+        sensors = []
+        with open('sensors{}.txt'.format(self.myID)) as f:
+            for n in f:
+                sensors.append(int(n))
+
         for linkName in pyrosim.linkNamesToIndices:
-            self.sensors[linkName] = SENSOR(linkName)
+            if int(linkName[4:]) in sensors:
+                self.sensors[linkName] = SENSOR(linkName)
 
     def Sense(self, step):
         for sensor in self.sensors.values():
+            #print(sensor.linkName)
             sensor.Get_Value(step)
 
     def Prepare_To_Act(self):
