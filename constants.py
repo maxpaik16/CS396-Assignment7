@@ -1,7 +1,7 @@
 
 import numpy as np
 
-NUM_STEPS = 2000
+NUM_STEPS = 1000
 
 GRAVITY_X = 0
 GRAVITY_Y = 0
